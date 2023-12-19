@@ -62,7 +62,6 @@ function B() {
         data: [...(result.data ?? [])],
       };
     },
-    pollingInterval: 5_000,
   });
 
   return (
