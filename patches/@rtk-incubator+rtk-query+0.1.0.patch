@@ -1,0 +1,13 @@
+diff --git a/node_modules/@rtk-incubator/rtk-query/dist/esm/react-hooks/buildHooks.js b/node_modules/@rtk-incubator/rtk-query/dist/esm/react-hooks/buildHooks.js
+index e62d7f5..8433984 100644
+--- a/node_modules/@rtk-incubator/rtk-query/dist/esm/react-hooks/buildHooks.js
++++ b/node_modules/@rtk-incubator/rtk-query/dist/esm/react-hooks/buildHooks.js
+@@ -111,7 +111,7 @@ function buildHooks({
+       } = api.endpoints[name];
+       const stableArg = useShallowStableValue(arg);
+       const lastValue = useRef();
+-      const querySelector = useMemo(() => createSelector([select(skip ? skipSelector : stableArg), (_, lastResult) => lastResult], (subState, lastResult) => selectFromResult(subState, lastResult, defaultQueryStateSelector)), [select, skip, stableArg, selectFromResult]);
++      const querySelector = useMemo(() => createSelector([select(skip ? skipSelector : stableArg)], (subState) => selectFromResult(subState, null, defaultQueryStateSelector)), [select, skip, stableArg, selectFromResult]);
+       const currentState = useSelector(state => querySelector(state, lastValue.current), shallowEqual);
+       useEffect(() => {
+         lastValue.current = currentState;
