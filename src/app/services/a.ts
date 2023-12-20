@@ -1,15 +1,15 @@
-import { createApi, fetchBaseQuery } from "@rtk-incubator/rtk-query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const stableResponse = [8];
 
 export const aApi = createApi({
   reducerPath: "aApi",
   baseQuery: fetchBaseQuery(),
-  entityTypes: ["A"],
+  tagTypes: ["A"],
   endpoints: (build) => ({
     getA: build.query({
       query: () => "https://jsonplaceholder.typicode.com/todos/1",
-      provides: ["A"],
+      providesTags: ["A"],
       transformResponse() {
         return stableResponse;
       },

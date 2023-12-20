@@ -1,8 +1,8 @@
 import { configureStore, ConfigureStoreOptions } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { aApi } from "./services/a";
 import { bApi } from "./services/b";
-import { setupListeners } from "@rtk-incubator/rtk-query";
 
 export const createStore = (
   options?: ConfigureStoreOptions["preloadedState"] | undefined
