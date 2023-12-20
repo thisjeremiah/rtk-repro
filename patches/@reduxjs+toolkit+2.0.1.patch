@@ -1,0 +1,13 @@
+diff --git a/node_modules/@reduxjs/toolkit/dist/query/react/rtk-query-react.modern.mjs b/node_modules/@reduxjs/toolkit/dist/query/react/rtk-query-react.modern.mjs
+index ef55d8e..46c2877 100644
+--- a/node_modules/@reduxjs/toolkit/dist/query/react/rtk-query-react.modern.mjs
++++ b/node_modules/@reduxjs/toolkit/dist/query/react/rtk-query-react.modern.mjs
+@@ -305,7 +305,7 @@ function buildHooks({
+       } = api.endpoints[name];
+       const stableArg = useStableQueryArgs(skip ? skipToken : arg, serializeQueryArgs, context.endpointDefinitions[name], name);
+       const lastValue = useRef3();
+-      const selectDefaultResult = useMemo2(() => createSelector2([select(stableArg), (_, lastResult) => lastResult, (_) => stableArg], queryStatePreSelector), [select, stableArg]);
++      const selectDefaultResult = useMemo2(() => createSelector2([select(stableArg), (_) => stableArg], queryStatePreSelector), [select, stableArg]);
+       const querySelector = useMemo2(() => selectFromResult ? createSelector2([selectDefaultResult], selectFromResult, {
+         devModeChecks: {
+           identityFunctionCheck: "never"
