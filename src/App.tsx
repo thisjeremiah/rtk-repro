@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useGetAQuery } from "./app/services/a";
-import { useGetBQuery } from "./app/services/b";
+import { getStateB, useGetBQuery } from "./app/services/b";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <A />
         <B />
         <C />
+        <BSelector />
       </div>
     </Debuggable>
   );
@@ -59,7 +60,7 @@ function B() {
       return {
         // Returning an unstable reference here to force a re-render
         // to demonstrate how often `selectFromResult` is running.
-        data: [...(result.data ?? [])],
+        data: result.data?.filter(Boolean) ?? [],
       };
     },
   });
@@ -68,6 +69,23 @@ function B() {
     <Debuggable>
       <div style={{ padding: 8 }}>
         B | Data: [{data?.join(", ")}] Render count: {renderCount.current}
+      </div>
+    </Debuggable>
+  );
+}
+
+// B Selector
+function BSelector() {
+  const renderCount = useRef(0);
+  renderCount.current += 1;
+
+  const { data } = useSelector(getStateB);
+
+  return (
+    <Debuggable>
+      <div style={{ padding: 8 }}>
+        B Selector | Data: [{data?.join(", ")}] Render count:{" "}
+        {renderCount.current}
       </div>
     </Debuggable>
   );
